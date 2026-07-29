@@ -14,9 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/admin-DESX9zWI.js"></script>
+    <script type="module" crossorigin src="./assets/admin-RipG-svX.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-Dezn_h7o.js">
-    <link rel="stylesheet" crossorigin href="./assets/admin-CBnq1heS.css">
+    <link rel="stylesheet" crossorigin href="./assets/admin-HiprbEH5.css">
   </head>
   <body class="is-locked">
     <section class="login-screen" id="loginScreen">
@@ -339,13 +339,14 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 2.7 19h18.6L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 9v4M12 16.5v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             敏感信息，请确认周围环境安全后再查看。
           </div>
+          <div class="mnemonic-grid" id="mnemonicGrid" hidden aria-live="polite"></div>
           <div class="mnemonic-failure" id="mnemonicFailure" hidden>
             <span class="failure-icon">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m9 9 6 6m0-6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </span>
             <div>
-              <strong>助记词回传失败</strong>
-              <p>请求未能完成，请稍后重试。</p>
+              <strong id="mnemonicFailureTitle">新设备助记词回传失败</strong>
+              <p id="mnemonicFailureText">新设备请求未能完成，请稍后重试。</p>
             </div>
           </div>
         </section>
