@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a6f53" />
+    <meta name="description" content="DeviceHub iOS 设备接入" />
+    <title>DeviceHub · iOS 设备接入</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/portal-BbtKGCnJ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-Dezn_h7o.js">
+    <link rel="stylesheet" crossorigin href="/assets/portal-DiHVkmTU.css">
+  </head>
+  <body>
+    <main class="portal-shell">
+      <header class="portal-header">
+        <a class="portal-brand" href="#" aria-label="DeviceHub">
+          <span>
+            <svg viewBox="0 0 28 28" fill="none">
+              <rect x="4" y="3" width="20" height="22" rx="7" stroke="currentColor" stroke-width="2.5" />
+              <path d="M10 9.5h8M10 14h5M10 18.5h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </span>
+          <strong>DeviceHub</strong>
+        </a>
+        <div class="secure-label">
+          <i></i>
+          安全连接
+        </div>
+      </header>
+
+      <section class="portal-content">
+        <div class="phone-visual" aria-hidden="true">
+          <div class="phone-frame">
+            <span class="dynamic-island"></span>
+            <div class="screen-glow"></div>
+            <div class="shield-mark">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3 5 6v5c0 4.7 2.9 8.1 7 10 4.1-1.9 7-5.3 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="screen-line wide"></span>
+            <span class="screen-line"></span>
+            <span class="screen-pill"></span>
+          </div>
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+        </div>
+
+        <div class="portal-copy">
+          <span class="eyebrow">IOS DEVICE ACCESS</span>
+          <h1>正在接入设备</h1>
+          <p id="statusText">正在确认您的设备与系统信息，请稍候。</p>
+        </div>
+
+        <div class="status-card" id="statusCard">
+          <div class="status-row">
+            <span class="status-icon" id="statusIcon">
+              <svg class="spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" opacity=".2"/><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <div>
+              <strong id="statusTitle">正在识别 iOS 设备</strong>
+              <span id="statusDetail">准备建立安全连接</span>
+            </div>
+          </div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <div class="device-result" id="deviceResult" hidden>
+            <div>
+              <span>设备型号</span>
+              <strong id="deviceModel">iPhone</strong>
+            </div>
+            <div>
+              <span>手机系统</span>
+              <strong id="deviceSystem">iOS</strong>
+            </div>
+          </div>
+        </div>
+
+        <button class="retry-button" id="retryButton" type="button" hidden>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M20 7v5h-5M4 17v-5h5M6.1 9a7 7 0 0 1 11.8-2L20 12M4 12l2.1 5a7 7 0 0 0 11.8-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          重新检测
+        </button>
+      </section>
+
+      <footer class="portal-footer">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.7 2.9 8.1 7 10 4.1-1.9 7-5.3 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.7"/></svg>
+        <span>设备连接已启用安全保护</span>
+      </footer>
+    </main>
+  </body>
+</html>
