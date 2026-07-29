@@ -14,9 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/admin-B5NsRJVz.js"></script>
+    <script type="module" crossorigin src="./assets/admin-C3chu6K6.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-Dezn_h7o.js">
-    <link rel="stylesheet" crossorigin href="./assets/admin-HiprbEH5.css">
+    <link rel="stylesheet" crossorigin href="./assets/admin-Bt-uMn2T.css">
   </head>
   <body class="is-locked">
     <section class="login-screen" id="loginScreen">
@@ -55,7 +55,7 @@
           <div class="login-heading">
             <span>WELCOME BACK</span>
             <h2>登录管理后台</h2>
-            <p>请输入您的管理员账号与密码</p>
+            <p>请输入您的账号与密码</p>
           </div>
           <label class="login-field">
             <span>账号</span>
@@ -127,6 +127,13 @@
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.94 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.57 15 1.7 1.7 0 0 0 3 14H3v-4h.08A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.57 1.7 1.7 0 0 0 10 3V3h4v.08A1.7 1.7 0 0 0 15.06 4.6a1.7 1.7 0 0 0 1.88-.34L17 4.2 19.83 7l-.06.06A1.7 1.7 0 0 0 19.43 9 1.7 1.7 0 0 0 21 10h.08v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
             系统设置
           </button>
+          <button class="nav-item" id="accountManagementButton" type="button" data-page="子账号管理" data-admin-only>
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M3.5 19a5.5 5.5 0 0 1 11 0M17 8v6M14 11h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            子账号管理
+          </button>
         </nav>
 
         <div class="sidebar-bottom">
@@ -138,10 +145,10 @@
             <p>敏感信息采用分级权限控制与访问审计。</p>
           </div>
           <div class="user-card">
-            <div class="avatar">管</div>
+            <div class="avatar" id="currentUserAvatar">管</div>
             <div>
-              <strong>系统管理员</strong>
-              <span>管理员权限</span>
+              <strong id="currentUserName">系统管理员</strong>
+              <span id="currentUserRole">管理员权限</span>
             </div>
             <button class="icon-button" id="logoutButton" aria-label="退出登录" title="退出登录" type="button">
               <svg viewBox="0 0 24 24" fill="none"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4M14 8l4 4-4 4M9 12h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -404,6 +411,67 @@
           <div class="modal-actions">
             <button class="button button-secondary" id="cancelModal" type="button">取消</button>
             <button class="button button-primary" type="submit">添加设备记录</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle" aria-hidden="true">
+      <div class="modal-card account-modal-card">
+        <div class="modal-header">
+          <div>
+            <span class="drawer-label">ACCOUNT MANAGEMENT</span>
+            <h2 id="accountModalTitle">子账号管理</h2>
+          </div>
+          <button class="icon-button" id="closeAccountModal" aria-label="关闭弹窗" type="button">
+            <svg viewBox="0 0 24 24" fill="none"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <section class="account-list-section">
+          <div class="account-list-heading">
+            <div>
+              <strong>已添加子账号</strong>
+              <span>子账号拥有设备后台权限，但不能新增账号</span>
+            </div>
+            <span class="account-count" id="subaccountCount">0 个</span>
+          </div>
+          <div class="subaccount-list" id="subaccountList">
+            <p class="subaccount-empty">暂未添加子账号</p>
+          </div>
+        </section>
+
+        <form id="subaccountForm">
+          <div class="account-form-heading">
+            <strong>添加子账号</strong>
+            <span>创建后即可使用新账号登录当前后台</span>
+          </div>
+          <div class="account-form-grid">
+            <label>
+              <span>显示名称</span>
+              <input id="subaccountDisplayName" type="text" maxlength="24" autocomplete="off" placeholder="例如：运营一组" required />
+            </label>
+            <label>
+              <span>登录账号</span>
+              <input id="subaccountUsername" type="text" minlength="3" maxlength="24" autocomplete="off" placeholder="3–24 位字母、数字" required />
+            </label>
+            <label>
+              <span>登录密码</span>
+              <input id="subaccountPassword" type="password" minlength="6" maxlength="64" autocomplete="new-password" placeholder="至少 6 位" required />
+            </label>
+            <label>
+              <span>确认密码</span>
+              <input id="subaccountPasswordConfirm" type="password" minlength="6" maxlength="64" autocomplete="new-password" placeholder="再次输入密码" required />
+            </label>
+          </div>
+          <p class="account-form-error" id="subaccountError" aria-live="polite"></p>
+          <p class="form-note">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7.5 10V8a4.5 4.5 0 0 1 9 0v2M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            密码将以加盐摘要保存；创建后不会显示明文密码。
+          </p>
+          <div class="modal-actions">
+            <button class="button button-secondary" id="cancelAccountModal" type="button">关闭</button>
+            <button class="button button-primary" id="createSubaccountButton" type="submit">添加子账号</button>
           </div>
         </form>
       </div>
